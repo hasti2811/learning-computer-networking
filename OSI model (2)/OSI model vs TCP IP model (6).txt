@@ -1,0 +1,21 @@
+the TCP/IP model combines layer 1 and 2 of the OSI model and it is called the network access layer, then the next layer
+is the internet layer which is just layer 3 of the OSI mode. then the next layer of the TCP/IP model is the host to host
+layer which is just layer 4 of the OSI model. then the last layer of the TCP/IP model is the application layer which is
+a combination of layers 5, 6 and 7 of the OSI model
+
+
+OSI model:
+7 - application layer
+6 - presentation layer
+5 - session layer
+4 - transport layer
+3 - network layer
+2 - data link layer
+1 - physical layer
+
+
+TCP/IP model:
+4 - application layer (layers 5, 6, and 7 of OSI model)
+3 - host to host layer (layer 5 of OSI model)
+2 - internet layer (layer 3 of OSI model)
+1 - network access layer (layers 1 and 2 of OSI model)

@@ -1,0 +1,11 @@
+host - any device which sends or receives traffic. examples of hosts: computer, phone, laptop, server, printer, cloud
+server etc.
+
+hosts can either be clients or servers. clients initiate requests and servers respond. for example if a computer
+is trying to visit google.com, the computer is the client and the web server is the server because its responding to the
+request.
+
+the web server may have to update its files from a file server so in this case the web server is the client and the
+file server is the server
+
+servers are computers with software installed which responds to specific requests.

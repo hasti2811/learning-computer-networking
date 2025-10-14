@@ -1,0 +1,9 @@
+HTTP and FTP are both layer 7 protocols.
+
+we've been using HTTP throughout these notes, for layer 5 we had HTTP cookies, for layer 6 we had ASCII and for layer 7
+it had its own set of commands such as GET, POST, HEAD etc. but there is also other protocols such as FTP.
+
+it doesn't make sense for FTP to use HTTP cookies in layer 5, FTP is free to choose how to implement layer 5 or to not
+even implement it. FTP doesn't have a way to identify a user session without the layers below it. FTP uses layer 3 and 4
+information to identify a user. so if you're using FTP to access a web server and your IP address changes, you'll have to
+log back in. FTP can also use ASCII for layer 6, and for layer 7 it has its own commands such as GET, PUT, PASV, etc..

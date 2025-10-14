@@ -1,0 +1,20 @@
+dig +trace <domain> - this shows the full DNS route on getting the IP address for the domain
+
+dig <domain> - this gives us the IPv4 address for the domain
+
+dig A <domain> - does the same thing as dig <domain>
+
+dig AAAA <domain> - this gives us the IPv6 address for the domain
+
+dig ns <domain> - this asks for the name servers for the authoritative for the domain
+
+dig mx <domain> - this asks for the servers that receive email for the domain and in what priority. then we can
+do dig <result> to find the IPs
+
+dig CNAME www.google.com - this creates an alias for the domain, this would return to us google.com
+
+dig TXT <domain> - this stores text information in DNS
+
+dig SOA <domain> - this contains administrative information about the domains DNS zone
+
+dig PTR <IP address> - reverse DNS, maps IP address to domain name

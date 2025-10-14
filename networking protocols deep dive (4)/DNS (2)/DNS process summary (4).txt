@@ -1,0 +1,119 @@
+when you type google.com, your computer asks your DNS's recursive resolver for the IP address of google.com. the resolver
+asks the root server such as a.root-servers.net but the root server does not know. the root server does know the TLD servers
+for .com. so it replies with a list of .com TLD servers. then the resolver asks a .com TLD server for the IP address of
+google.com. but the TLD server doesn't store the exact IP for google.com but it knows the authoritative DNS servers for
+google.com. so it responds with the NS records pointing to googles own DNS server like ns1.google.com, ns2.google.com.
+then the resolver asks googles authoritative DNS server for the IP of google.com and the authoritative server knows the IP
+address for google.com so it responds with the IP address. then the resolver returns the IP address to the computer and it
+can then connect to the website.
+
+to see the process we can do dig +trace google.com:
+hasti@DESKTOP-V3TMK7G:/mnt/c/Users/Hasti Amin/OneDrive/Desktop$ dig +trace google.com
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.1-Ubuntu <<>> +trace google.com
+;; global options: +cmd
+.                       512450  IN      NS      a.root-servers.net.
+.                       512450  IN      NS      b.root-servers.net.
+.                       512450  IN      NS      c.root-servers.net.
+.                       512450  IN      NS      d.root-servers.net.
+.                       512450  IN      NS      e.root-servers.net.
+.                       512450  IN      NS      f.root-servers.net.
+.                       512450  IN      NS      g.root-servers.net.
+.                       512450  IN      NS      h.root-servers.net.
+.                       512450  IN      NS      i.root-servers.net.
+.                       512450  IN      NS      j.root-servers.net.
+.                       512450  IN      NS      k.root-servers.net.
+.                       512450  IN      NS      l.root-servers.net.
+.                       512450  IN      NS      m.root-servers.net.
+.                       512450  IN      RRSIG   NS 8 0 518400 20251026170000 20251013160000 61809 . tBKuuyiZ//4daDoQhcaMbSRcFVmUY09q6/FfYsnsKvdw3xxRf/5kKF38 zL6O6k7dXSpe09eHw894flAhvBwgPTfkzqvsTHJIw4sTPuXb/BXuUIR9 x/3O/1a6ZBYFLb15X1+56CoIyolcKqhwyxQpKEFsTLMYTmcqXXyC6A/9 qgllZaS7UKm+h9BW3uTAB7TGOBxHmlXxVNgbeNBB4Nswtc4cLyvdADDG al2GNoFcidJauxD6PxPw0x5W6bauwJiDP1Xl+MyVGRWx8OXuZ0nSw8SK T9BhOS15eH1e+Ai2Eyhw2QbqXUKv9MxlxKz0bxcpahFhVsNEOBQDz8I3 ienZsQ==
+;; Received 525 bytes from 1.1.1.1#53(1.1.1.1) in 10 ms
+
+;; UDP setup with 2001:500:a8::e#53(2001:500:a8::e) for google.com failed: network unreachable.
+;; no servers could be reached
+;; UDP setup with 2001:500:a8::e#53(2001:500:a8::e) for google.com failed: network unreachable.
+;; no servers could be reached
+;; UDP setup with 2001:500:a8::e#53(2001:500:a8::e) for google.com failed: network unreachable.
+;; UDP setup with 2001:503:ba3e::2:30#53(2001:503:ba3e::2:30) for google.com failed: network unreachable.
+com.                    172800  IN      NS      l.gtld-servers.net.
+com.                    172800  IN      NS      j.gtld-servers.net.
+com.                    172800  IN      NS      h.gtld-servers.net.
+com.                    172800  IN      NS      d.gtld-servers.net.
+com.                    172800  IN      NS      b.gtld-servers.net.
+com.                    172800  IN      NS      f.gtld-servers.net.
+com.                    172800  IN      NS      k.gtld-servers.net.
+com.                    172800  IN      NS      m.gtld-servers.net.
+com.                    172800  IN      NS      i.gtld-servers.net.
+com.                    172800  IN      NS      g.gtld-servers.net.
+com.                    172800  IN      NS      a.gtld-servers.net.
+com.                    172800  IN      NS      c.gtld-servers.net.
+com.                    172800  IN      NS      e.gtld-servers.net.
+com.                    86400   IN      DS      19718 13 2 8ACBB0CD28F41250A80A491389424D341522D946B0DA0C0291F2D3D7 71D7805A
+com.                    86400   IN      RRSIG   DS 8 1 86400 20251026170000 20251013160000 61809 . bsH6I9vtmfeA1PmDl6Y7G9a6M/a2BplnKsPpFtjJtB+00kRW8p3lxMcF P8S9II2SwRQCtGxPxFt6XVQd9+9oUHBHwsAr3yNHFsDB5YuF3i13iZv6 8K9CII/E/r8wZO5PVmlfxkGUvDOXlonx1DZdjo0Z0mgnNBY3IpWSygzq DB1OgFUFTpZPfOwW9Xkr8IWVbtuQthim6zumqGsPIR842VBJDAZo97kW eVUwFJS+6/7SAJY4VIiwJDgezbLPcHQKXHdr8dI8bHg98EQsfIrz89Yt lDYN+AFGBqisWFfgBdaX9gY8YwUG+aXz1uli+QWZzbjLupJcx9xbsHyA 3AH+QQ==
+;; Received 1170 bytes from 198.41.0.4#53(a.root-servers.net) in 20 ms
+
+;; UDP setup with 2001:502:7094::30#53(2001:502:7094::30) for google.com failed: network unreachable.
+google.com.             172800  IN      NS      ns2.google.com.
+google.com.             172800  IN      NS      ns1.google.com.
+google.com.             172800  IN      NS      ns3.google.com.
+google.com.             172800  IN      NS      ns4.google.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN NSEC3 1 1 0 - CK0Q3UDG8CEKKAE7RUKPGCT1DVSSH8LL NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN RRSIG NSEC3 13 2 900 20251018002622 20251010231622 20545 com. i7+XosiBPp3tS4WJyTsYdTMkMCSkTUA8i4Tju+O0zUuipJqE7g9GTtbF wa1dU+DtAarb3THmbjFWaoB1x7WJhw==
+S84BOR4DK28HNHPLC218O483VOOOD5D8.com. 900 IN NSEC3 1 1 0 - S84BR9CIB2A20L3ETR1M2415ENPP99L8 NS DS RRSIG
+S84BOR4DK28HNHPLC218O483VOOOD5D8.com. 900 IN RRSIG NSEC3 13 2 900 20251019012700 20251012001700 20545 com. nKEgWHYHQmMJYJ10DlvFa88zZ4H426WeNM4v96eIZ2JhcVQFi8+rKJaa 24/rJ4UaIkZlszt5pHInFeSzgLCBYw==
+;; Received 644 bytes from 192.41.162.30#53(l.gtld-servers.net) in 0 ms
+
+;; UDP setup with 2001:4860:4802:32::a#53(2001:4860:4802:32::a) for google.com failed: network unreachable.
+google.com.             300     IN      A       142.251.29.138
+google.com.             300     IN      A       142.251.29.139
+google.com.             300     IN      A       142.251.29.100
+google.com.             300     IN      A       142.251.29.101
+google.com.             300     IN      A       142.251.29.113
+google.com.             300     IN      A       142.251.29.102
+;; Received 135 bytes from 216.239.34.10#53(ns2.google.com) in 20 ms
+
+
+basically first thing is that our dns resolver asks the root servers for the IP address for google.com:
+
+they respond with the TLD servers:
+com.                    172800  IN      NS      l.gtld-servers.net.
+com.                    172800  IN      NS      j.gtld-servers.net.
+com.                    172800  IN      NS      h.gtld-servers.net.
+com.                    172800  IN      NS      d.gtld-servers.net.
+com.                    172800  IN      NS      b.gtld-servers.net.
+com.                    172800  IN      NS      f.gtld-servers.net.
+com.                    172800  IN      NS      k.gtld-servers.net.
+com.                    172800  IN      NS      m.gtld-servers.net.
+com.                    172800  IN      NS      i.gtld-servers.net.
+com.                    172800  IN      NS      g.gtld-servers.net.
+com.                    172800  IN      NS      a.gtld-servers.net.
+com.                    172800  IN      NS      c.gtld-servers.net.
+com.                    172800  IN      NS      e.gtld-servers.net.
+com.                    86400   IN      DS      19718 13 2 8ACBB0CD28F41250A80A491389424D341522D946B0DA0C0291F2D3D7 71D7805A
+com.                    86400   IN      RRSIG   DS 8 1 86400 20251026170000 20251013160000 61809 . 
+
+
+then the resolver asks the tld servers for the IP of google.com, the TLD servers tell us to ask the authoritative servers:
+google.com.             172800  IN      NS      ns2.google.com.
+google.com.             172800  IN      NS      ns1.google.com.
+google.com.             172800  IN      NS      ns3.google.com.
+google.com.             172800  IN      NS      ns4.google.com.
+
+then the resolver asks the authoritative servers and they know the IP address for google.com so they return it:
+
+google.com.             300     IN      A       142.251.29.138
+google.com.             300     IN      A       142.251.29.139
+google.com.             300     IN      A       142.251.29.100
+google.com.             300     IN      A       142.251.29.101
+google.com.             300     IN      A       142.251.29.113
+google.com.             300     IN      A       142.251.29.102
+
+
+
+
+
+
+
+
+
+
+

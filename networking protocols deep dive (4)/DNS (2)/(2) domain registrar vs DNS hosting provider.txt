@@ -1,0 +1,4 @@
+domain registrar is where you purchase domains, examples are AWS route53, godaddy, vercel domains, porkbun, cloudflare etc.
+
+DNS hosting provider is the service that actually responds to queries for your domain, they store DNS records, when
+someone types your domain into the browser, their computer asks your DNS host 'what IP is this domain at'.

@@ -1,0 +1,16 @@
+recap:
+
+4 hosts (A:a1a1, B:b2b2, C:c3c3, D:d4d4) connected to switch, MAC address table empty, switch ports: A->5, B->7, C->8, D->9.
+A send data to D, SRC a1a1 DST d4d4. A sends data through port 5, MAC address table: 5->a1a1. (action learn). then
+action 2 flood (flood frame to all hosts connected to switch). when it arrive to D, D sends response to A. switch learns
+D is on port 8. new MAC address table: 5->a1a1 8->d4d4.
+
+end of recap.
+
+
+in the above example, from A to D was a unicast frame because the destination MAC is another host (SRC a1a1 DST d4d4). 
+a broadcast would look like: SRC a1a1 DST ffff. broadcast frame means the destination MAC address is ffff. this means
+the frame gets sent to all hosts on the network. the first MAC address entry would have been the same if it was broadcast
+because even though the frame gets sent to all hosts, the SRC is a1a1 and it goes through port 5. unicast frames are only
+flooded when the destination MAC address is not in the MAC address table, if it is then there is no flooding. whereas with
+broadcast, its always flooded

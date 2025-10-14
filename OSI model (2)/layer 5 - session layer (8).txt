@@ -1,0 +1,18 @@
+the OSI model was made before PC's, computing was done on massive machines called mainframes, humans accessed these
+mainframes through dumb terminals which was just a monitor and a keyboard connected to the mainframes. these mainframes
+were connected to other mainframes which also had their own set of users accessing through their own dumb terminals.
+
+lets say we have 2 mainframes (A, B) that are connected to each other, and A has 3 users (blue, orange, yellow) and B has
+2 users (blue2, green2), and blue from A is talking to blue2 on B the same time as green from A is talking to green2
+on B, since both mainframes are doing all the computing, the packets will have the same MAC address and IP address. so how
+will the data between the 2 blue users be kept separate from the 2 green users.
+
+Layer 5 distinguishes between user sessions, it identifies a user independent from L2, L3 or L4 addresses
+
+lets say there was a user on his phone connected to home wifi and he visits www.site.com. he would have to login etc.
+then lets say he goes to a coffee shop and connects to that wifi. since there is a new IP address because there is a new
+internet connection, the user would have to login again. since we are using HTTP to access this website, HTTP has a
+feature called HTTP cookies (they are arbitrary text strings that store user-specific information) which are generated
+by the server and given to the user when he first logs in. so now if he goes to a restaurant and uses their wifi and
+logs in, the website would know its the user despite there being a new IP address because the cookie stays with the user.
+

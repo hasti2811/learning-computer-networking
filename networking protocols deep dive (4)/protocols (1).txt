@@ -1,0 +1,57 @@
+protocols are a set of rules and messages that form an internet standard, for example the ARP (address resolution protocol)
+resolved IP to MAC mappings. this allows for 2 hosts to discover each others MAC address if all they know are each others
+IP addresses.
+
+the key with ARP is that someone had to determine what an ARP request looks like, what question was asked in the ARP
+request, what information was included in the ARP request, or what to add in the DST MAC address in the MAC request. and
+the same way, something had to decide what an ARP response looks like. in the case of ARP, this set of rules is defined
+by the RFC 826 (the engineering implementation guidelines for how to do ARP).
+
+besides ARP, there are other internet protocols such as:
+
+FTP - file transfer protocol, FTP allows a client and a server to send files to each other. it would look like this:
+
+computer ----------|RETR file.pdf|----------> FTP server
+FTP server ----------|file.pdf|----------> computer
+
+the FTP conversation is made up of messages, the client would send the RETR command (which stands for retrieve) and asks
+for a particular file, then it prompts the server to respond to that file.
+
+SMTP - simple mail transfer protocol, email servers use this protocol to exchange emails. the conversation would look
+like this:
+
+computer ----------|HELO client.com|----------> SMTP server
+SMTP server ----------|250 email.com|----------> computer
+
+the client will send the HELO command to an SMTP server, then the SMTP server will respond with a response code of 250,
+and now the client and the server can exchange emails with one another. HELO and 250 are messages in the SMTP standard.
+
+HTTP - hyper text transfer protocol, this is the protocol used when you communicate with a web server, web servers host
+mini websites written in HTML, and those HTML web pages are exchanged using HTTP. the conversation would look like this:
+
+computer ----------|GET /index.html|----------> Web server (http://site.com)
+Web server (http://site.com) ----------|200 OK|----------> computer
+
+when you browse to http://site.com, the client (web browser/computer) sends a GET request to the web server, then the web
+server will respond with a 200 OK message and provide the website asked for.
+
+SSL - secure sockets layer
+
+TLS - transport layer security
+
+both SSL and TLS allow the client and the server to build a secure tunnel between themselves, then they can do HTTP
+conversations in that tunnel
+
+this process is known as HTTPS.
+
+HTTPS - HTTP secured with SSL/TLS
+
+
+
+
+
+
+
+
+
+

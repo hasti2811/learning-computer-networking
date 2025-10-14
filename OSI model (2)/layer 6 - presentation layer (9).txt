@@ -1,0 +1,17 @@
+layer 6 tells us what to do with the bits (1s and 0s), lets say some data was sent to www.site.com. the data has arrived
+to the web server, has arrived to the correct MAC address, IP address, port, and user session. now layer 6 tells us how
+to interpret the bits.
+
+there are multiple ways to interpret the bits such as splitting them into 6 bits each as base64 coding. this would mean
+that each combination of 6 bits would turn into one base64 character.
+
+we could also interpret them as 4 bits each which would mean each combination of 6 bits would turn into one hexadecimal
+character.
+
+we could also interpret them as 32/64 bits each, which would make each combination of 32/64 bits as one number.
+
+
+modern example of layer 6:
+
+HTTP as a protocol uses ASCII encoding, this groups the bits into sets of 8 bits and interprets each of those 8 bits as
+a different ASCII character

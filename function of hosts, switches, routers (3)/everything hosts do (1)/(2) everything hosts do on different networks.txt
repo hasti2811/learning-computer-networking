@@ -1,0 +1,79 @@
+computerA----------|router|---------computerC
+a2a2                 e5e5             c4c4
+10.1.1.22          10.1.1.1         10.9.9.44
+/24                  /24              /24
+
+/24 is a subnet mask (255.255.255.0)
+
+host A, the router, and host C all have ARP caches
+
+host A wants to send data to host C, host A knows host C's IP address. host A also knows that host C is on a foreign
+network, it knows this by looking at its own IP address and subnet mask and comparing it with the target IP address.
+
+host A is able to create a layer 3 header:
+
+SRC 10.1.1.22
+DST 10.9.9.44
+
+now host A needs to create a layer 2 header to do hop to hop delivery, the next hop is the router. as of right now layer
+2's ARP cache is empty so it doesn't know the destination (router) MAC address
+
+layer 2:
+SRC a2a2
+DST ????
+
+so host A needs to make an ARP request to find the MAC address of the router. but how does host A know the routers IP
+address? host A knows the routers IP address because the router is already configured on host A as the default
+gateway. when you configure a computer to an internet, you must need the computers IP, the subnet mask, and the default
+gateway which is the routers IP address
+
+so host A knows the routers IP address because it is the default gateway, meaning host A is able to send an ARP request
+to find the routers MAC address
+
+the ARP request:
+if anyone has the IP 10.1.1.1, send me your MAC. my IP/MAC is 10.1.1.22/a2a2
+
+the DST of the layer 2 header on the ARP request is ffff meaning its broadcast (every device on the network receives it).
+then the router will send an ARP response back to host A
+
+ARP response:
+I am 10.1.1.1, my MAC is e5e5
+
+now host A's ARP cache is populated:
+
+host A ARP cache:
+10.1.1.1 --> e5e5
+
+now it has the mapping for the default gateway so it can now create the layer 2 header for the packet.
+
+the layer 2 header:
+SRC a2a2
+DST e5e5
+
+data:
+layer 3:
+SRC 10.1.1.22
+DST 10.9.9.44
+layer 2:
+SRC a2a2
+DST e5e5
+
+this data can now be sent on the wire and be received by the router, the router will discard the layer 2 header because
+the hop is complete
+
+now host A's job is done, now the router will create a layer 2 header and send it to host C, or even another router (if
+there is one) then to host C
+
+also now that host A's ARP cache has the routers mapping, if host A wants to send data to another host in a foreign
+network, the layer 2 header does not change. only the DST for the layer 3 header changes because all it needs to do
+is define the new end point and that's all then send the packet to the router.
+
+
+
+
+
+
+
+
+
+

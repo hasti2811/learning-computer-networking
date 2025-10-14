@@ -1,0 +1,79 @@
+computerA(a2a2:10.1.1.22:255.255.255.0)----------------computer(b3b3:10.1.1.33:255.255.255.0)
+
+these hosts are directly connected but they don't know that, both hosts also have a NIC meaning that they both have MAC
+addresses. both hosts also have IP addresses and subnet masks. a subnet mask identifies the size of the IP network
+
+host A wants to send data to host B, host A knows host B's IP address (maybe user typed ping 10.1.1.33 or found out from
+DNS (converting domain name to IP address)). host A knows that host B is in the same network, the user compared host A
+IP address to its subnet mask to determine how many IP addresses are on the same network
+
+since host A knows host B's IP address, it is able to put a layer 3 header onto the data, this will serve end to end
+delivery. it will stamp the source and destination IP addresses:
+
+layer 3 header:
+SRC 10.1.1.22
+DST 10.1.1.33
+
+layer 3 cannot interact with the wire so we need layer 2, the packet will be passed onto layer 2. however host A does not
+know host B's MAC address, so host A must use ARP to figure out host B's MAC address
+
+layer 2 header:
+SRC a2a2
+DST ????
+
+the ARP request:
+if anyone has the IP 10.1.1.33, send me your MAC. my IP/MAC is 10.1.1.22/a2a2
+
+host A will shoot an ARP request is going to ask for the MAC address which is associated with the IP address of host B,
+this ARP request will include the senders (host A) IP address and MAC address. the ARP request includes a layer 2 header
+and the SRC MAC address will be a2a2 (host A MAC address) and the DST MAC address will be ffff (broadcast). this will
+send the ARP request to all hosts on the network. broadcasts are used to send data to every host on the network
+
+every device with an IP address has an ARP cache which is a table that keeps track of recently learned IP/MAC mappings.
+when the ARP request is sent, host B's ARP cache will look like this:
+
+10.1.1.22 --> a2a2
+
+this is because the ARP was stamped with the senders (host A) IP address and MAC address, host B will now respond with 
+an ARP response, it will include its own IP address and it will outline its MAC address
+
+the ARP response:
+I am 10.1.1.33, my MAC is b3b3
+
+this ARP response is sent unicast meaning it is sent directly back to host A
+
+since host B knows host A's MAC address, it can create the layer 2 header which will send the ARP response directly to
+host A:
+
+SRC b3b3
+DST a2a2
+
+when the ARP response arrives to host A, its ARP cache will be populated with the MAC address it
+
+host A ARP cache:
+10.1.1.33 --> b3b3
+
+now host A can create a layer 2 header for the initial data:
+
+layer 3:
+SRC 10.1.1.22
+DST 10.1.1.33
+layer 2:
+SRC a2a2
+DST b3b3
+
+now host A can do hop to hop delivery and host B will receive the data. then host B can discard the layer 2 header, then
+it can also discard the layer 3 header too
+
+if host B ever wants to respond to host A, it will be much quicker because it now has learned the IP address and MAC
+address of host A
+
+
+
+
+
+
+
+
+
+

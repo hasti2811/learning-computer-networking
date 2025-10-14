@@ -1,0 +1,15 @@
+nslookup - helps you look up DNS records which tell you how domain names map to IP addresses
+
+nslookup amazon.com:
+Server:         10.255.255.254
+Address:        10.255.255.254#53
+
+Non-authoritative answer:
+Name:   amazon.com
+Address: 206.253.89.151
+
+the server part shows the DNS server my computer used to perform the lookup, the address part is the same but it also shows
+#53 which is the port, meaning it uses port 53 which is default for DNS.
+
+the non authoritative answer part is the answer we got, the domain we queried was amazon.com, the corresponding IP address
+is 206.253.89.151

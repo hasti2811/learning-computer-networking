@@ -1,0 +1,5 @@
+VLANs - virtual local area networks. they divide switch ports into isolated groups. for example imagine a switch with 4
+hosts, 2 of the hosts can be grouped in a VLAN called VLAN20, and the other 2 in VLAN30. these VLANs act as mini switches
+within the main switch. and these mini switches do the actions of a MAC address table (learn, flood, forward). this means
+that VLAN20 and VLAN30 will have their own separate MAC address tables, and the switch will do the actions confined
+to the 2 isolated groups.

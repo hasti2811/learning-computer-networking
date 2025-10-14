@@ -1,0 +1,13 @@
+a network is a logical grouping of hosts which require similar connectivity and what transports traffic between
+hosts (anytime 2+ hosts are connected, you have a network), example:
+
+computer------------------computer
+
+a regular network would be like a home, it has computer, phone, ipad etc.
+
+networks can contain other networks, for example a school is network and it could have 6 classrooms and that all the
+hosts in each classroom are grouped up in their own network. this networks within network are called
+subnets (sub-networks).
+
+networks can also connect to other networks, if I am at home and I want to access a classroom network, this is done by
+having each network being connected to the internet, the internet is just a bunch of networks connected together

@@ -1,0 +1,15 @@
+computerA---------------computerB
+
+when computer A wants to send data to computer B, it goes through encapsulation. firstly the data goes through layer 4, it
+will receive a layer 4 header which would be TCP/UDP which will include the source and destination port to do service
+to service delivery. when it has the layer 4 header only it is known as a segment. then the data gets passed down to layer
+3 which it will receive another header which is IP. it will include the source and destination IP to provide end to end
+delivery. when data has layer 4 and layer 3 headers it is known as a packet. then the packet will be sent to layer 2 which
+will give it a layer 2 header to provide hop to hop delivery. the layer 2 header will include the source and destination
+MAC address when data has layer 4, 3 and 2 headers it is known as a frame. that frame then gets converted into bits
+and gets sent across the wire to computer B. now computer B (the receiving host) will do de-encapsulation. computer B
+will take the bits off the wire and convert it back into a frame, layer 2 will check the layer 2 header to make sure
+the destination MAC address of the hosts NIC is correct. then layer 2 will be discarded and sent to layer 3. then layer 3
+will check the IP header to confirm that the destination IP address is correct, then it will discard the layer 3 header
+and it will be passed to layer 4. then layer 4 will look at the layer 4 header to check the destination port. then it will
+deliver the data to the application and the data will then be processed

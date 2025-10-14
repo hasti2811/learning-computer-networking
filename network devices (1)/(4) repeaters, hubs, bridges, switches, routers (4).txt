@@ -1,0 +1,97 @@
+REPEATERS:
+
+we understand that a network is created when you connect 2 computers together using a wire:
+
+computer----------------------computer
+
+when you send data across a wire, it decays as it travels (longer distances), a repeater can be used to regenerate
+signals:
+
+computer--------repeater---------computer
+--------------->||||||||->>>>>>>>>>>>>>>>
+
+this allows communication across greater distances
+
+HUBS:
+
+lets say if we have a network with 3 hosts, each host has to be connected with each other. this is not scalable because
+if we now add a fourth host, we'd have to connect it to all the other hosts etc.
+
+to solve this issue we can use a hub, its one device which multiple hosts connect to rather than all the hosts being
+connected to each other. so if we add another host, we connect it to the hub and now it has connectivity to all the
+other hosts.
+
+hubs are multi port repeaters, we said that repeaters regenerate signals. a hub is the same but it does it over
+multiple ports. if there are 4 hosts (A-D) connected to a hub, if A communicate (send a packet) with B, it will
+hit the hub and the hub will duplicate the packet and send it to the other ports
+
+BRIDGES:
+
+the problem with hubs is that everyone receives everyone else's data. if A sends data to B, C and D also receive the
+data
+
+a bridge sits between hub connected hosts. imagine hosts A, B and C are connected to a hub, then hosts D, E and F are
+connected to another hub, a bridge sits between them and connects the 2 hubs
+
+bridges only have 2 ports, bridges will learn which hosts are on each side. if host A sends data to B through the hub,
+the hub regenerates the data to all ports so C will also get the data but so will the bridge. the bridge knows which side
+B is on, so it doesn't bring the packet to the other side (D, E, F)
+
+if A sends data to D, it will hit the hub, the hub sends it to B and C and also the hub, the hub sends the packet to
+the bride and the bridge knows that D is on the other side so it sends the data to the hub on the other side and the
+hub sends the data to D, E and F.
+
+SWITCHES:
+
+a switch is a mix of hubs and bridges, they have multiple ports and they learn which posts are on each port. so all 6
+hosts (A, B, C, D, E, F) will be connected to the switch, and if A wants to send data to B, the data will hit the
+switch and the switch knows that it needs to send data to B due to which port its connected to, so only B will
+receive the data
+
+switches facilitate communication within a network
+
+hosts on a network share the same IP address space, if the IP of the network is 192.168.1.x, the devices will be like
+.11, .22, .33 etc (192.168.1.x etc...)
+
+ROUTERS:
+
+lets say we have a school with 2 classrooms (maths and science)
+
+maths network IP: 172.16.20.x, A=.11, B=.22, C=.33
+science network IP: 172.16.30.x, D=.44, E=.55, F=.66
+
+the reason these 2 classroom networks are separate is because they may have different connectivity requirements
+
+if A wanted to send data to D which is a host from a different network, a router must be used between the 2
+networks, that router should also be connected to the internet
+
+a router facilitates communication between networks, routers also provide traffic control points (security, filtering,
+redirecting), if we want to limit the traffic that goes from A to D, since they are in different networks, the traffic
+has to flow through the router so it makes a perfect point to add security policies
+
+routers learn which networks they are attached to, it would know which network is 172.16.20.x and which is 172.16.30.x
+and which is the internet. the knowledge of each of these networks are known as routes, routes are stored in a routing
+table. a routing table is all the networks that a router knows about. routers use routing tables to funnel traffic out
+the appropriate interface 
+
+routers have IP addresses in the networks they are attached to, so in the 172.16.20.x network, the routers IP may
+be something like .1 (172.16.20.1) and in the 172.16.30.x network the routers IP may be something
+like .254 (172.16.30.254). this IP address given to the router depending on the network is known as a gateway.
+
+a gateway is each hosts way out of their local network
+
+if A -> 172.16.20.11 wants to send data to D -> 172.16.30.44, A would have to go through its router which is through
+the routers default gateway which is 172.16.20.1
+
+KEY NOTE:
+
+- routing is the process of moving data between networks, a router is a device whose primary purpose is routing
+
+- switching is the process of moving data within networks, a switch is a device whose primary purpose is switching
+
+
+
+
+
+
+

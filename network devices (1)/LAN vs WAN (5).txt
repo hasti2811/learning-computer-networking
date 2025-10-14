@@ -1,0 +1,32 @@
+LAN (local area network) - small area (home/office), connects multiple devices to share resources, providing internet
+access in a small area
+
+WAN (wide area network) - large area (city/country/continent), connects multiple LANs to enable communication and data
+transfer over long distances
+
+a computer network is a group of devices connected to each other allowing them to share information and recourses.
+
+LAN (local area network) - a network that connects computers and devices within a limited geographical area such as: home,
+office, school.
+
+WAN (wide are network) - a network that covers a large geographical area often spanning cities, countries and even
+continents. they are much larger than a LAN (they connect multiple LAN's together). They are generally slower than LANs
+because of the long distances and many devices involved. they are managed by multiple organisations/telecom providers.
+they enable communication and resource sharing across wide distances. the technology used are: fibre optic cables,
+leased lines, satellites, 4G/5G etc.
+
+importance in modern infrastructure:
+
+- enables communication between devices
+- critical for browsing and streaming
+- backbone for data transfer and file sharing
+
+when we use an application, our device sends data to a server over the network. the server processes this data and sends
+back a response.
+
+networking in devops:
+
+- enables communication between servers (ssh into ec2 instance server etc)
+- critical for launching and updating applications
+- crucial in monitoring and managing infrastructure
+- enhances troubleshooting, performance and scalability

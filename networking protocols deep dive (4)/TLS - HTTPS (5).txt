@@ -1,0 +1,23 @@
+HTTP sends data in plain text, anyone intercepting it can read it. for this reason we use TLS over it to ensure security
+which makes up HTTPS. TLS encrypts the data making it more secure.
+
+TLS provides encryption - prevents anyone from reading your data, authentication - ensures you're talking to the correct
+server, integrity - ensures data is not tampered with in transit.
+
+the first thing that happens is Client Hello, the browser connects to the server and says 'I want to talk securely, here
+are the encryption methods I support'
+
+then what happens is Server Hello + Certificate, the server replies with the encryption method to use. it also provides its
+digital certificate issued by a trusted certificate authority which contains the servers public key.
+
+then what happens is certificate verification. the browser checks 3 things:
+- is the certificate from a trusted certificate authority?
+- is it valid (not expired)?
+- does it match the domain you're connecting to?
+
+if all are valid then continue, if not the browser shows a warning.
+
+then what happens is key exchange, the client and server securely agree on a session key, the session key is encrypted with
+the servers public key, so only the server can decrypt it.
+
+now all HTTP data (requests and responses) is encrypted with the session key, data is protected.

@@ -1,0 +1,16 @@
+the purpose of networking is to allow 2 hosts to share data, it allows us to send data through the wire:
+
+computer------------computer
+
+
+for hosts to send data automatically through the wire, they (hosts) must follow a set of rules, this is no different to
+languages, each language has its own rules. networking has rules which are split into 7 different layers which is
+known as the OSI model
+
+7 - application layer
+6 - presentation layer
+5 - session layer
+4 - transport layer
+3 - network layer
+2 - data link layer
+1 - physical layer

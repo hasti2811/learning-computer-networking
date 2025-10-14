@@ -1,0 +1,45 @@
+layer 2 will interact with the physical layer, layer 2 puts bits on the wire and receives bits from the wire. whatever
+the wire (that connects the 2 computers together) is connected to is considered to be as a layer 2 item. network
+interface cards and wifi access cards are layer 2 items
+
+layer 2's responsibility is to take bits from one NIC (network interface card) to the other NIC, which can be known as
+hop to hop delivery. layer 2 uses MAC addresses to perform this.
+
+MAC addresses are 48 bits, represented as 12 hex digits.
+example MAC address: 94-65-9C-3B-8A-E5 (Windows) | 94:65-9C:3B:8A:E5 (Linux) | 9465.9C3B.8AE5 (Cisco)
+
+every single NIC has a MAC address:
+computer>-----------<computer (<> = NIC)
+
+alongside NIC's, switches are also layer 2 devices
+
+computer>-------|switch|-------<computer
+
+if 4 computers (A, B, C, D) are connected to a switch, and A sends data to B, switches learn which MAC addresses 
+are on which ports by examining the source address and destination address of incoming data. this allows A to send data
+to only B
+
+usually communication between hosts require multiple hops especially over long distances such as the internet, this means
+we would have to jump across multiple routers to target hosts. each router is connected to a NIC and each NIC has its
+own MAC address. layer 2 deals with sending the data from one MAC address to another MAC address and so on until it
+reaches the hosts NIC. layer 2 handles the hop to hop delivery
+
+since MAC addresses handle data being hopped from one MAC address to another, how do we ensure that data gets sent from
+the correct place to the correct destination? this is where layer 3 comes in, the network layer which ensures end to end
+delivery ----- go to layer 3 - network layer (4).txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

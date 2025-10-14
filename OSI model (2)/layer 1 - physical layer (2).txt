@@ -1,0 +1,9 @@
+data on computers exist in the form of bits (1s and 0s), something has to be used to transport these bits between
+hosts. this is where the physical layer comes in, the goal of the physical layer is transporting bits. 
+
+anything that contributes to moving bits from computer to computer is known as layer 1 technology, examples
+are: cables (ethernet, coaxial, fiber), wifi, repeaters, hubs, these cables take bits from one end and taking them to 
+the other end.
+
+the OSI model was written before the idea of wireless internet communication, so wifi is also considered as a layer one
+technology because its purpose is to carry bits from one computer to the next

@@ -1,0 +1,20 @@
+layer 7 determines what the interpretated characters after layer 6 does.
+
+lets use the ASCII example from before
+
+original bits:
+
+0100011101000101010101000010000000101111011100110110100101101101
+
+ASCII encoding from layer 6:
+
+01000111 01000101 01010100 00100000 00101111 01110011 01101001 01101101
+    G        E       T      (space)    /         s        i        m
+
+
+the first 3 bytes turn into the word GET. GET is a command (in HTTP) used to fetch a web page
+
+if we had the full bits and converted them the full thing is like this:
+
+GET /simple.html HTTP/1.1
+Host: pracnet.net

@@ -1,0 +1,25 @@
+every host needs 4 items for internet connectivity:
+
+- an IP address, this will serve as the hosts identity on the internet
+
+- a subnet mask, this will tell the host the size of its network. this will allow the host to determine whether the IP
+address its trying to speak to is on the same network or a foreign network. subnet masks can look either like
+this: /24 or like this: 255.255.255.0.
+
+if a host has only those 2 things, this is enough for the host to speak to any other host on the same network. but if this
+host needs to speak to something on a foreign network such as the internet, a router is required.
+
+- a router (default gateway), specifically the host needs the routers IP address which is the default gateway in order
+to speak to foreign networks such as the internet and speak to any server (FTP, SMTP, Web server etc).
+
+most of the time when you're on the internet, emails and website domain names are included, so the host cannot speak to
+these servers with only those 3 things, it needs those 2 servers IP addresses (it can speak to the FTP server tho). this
+is where the fourth requirement comes in which is a DNS server.
+
+- DNS, this will convert domain names to IP address in order to communicate to servers such as web servers and SMTP servers.
+
+host:
+IP: 9.1.1.1
+SM: /24 | 255.255.255.0
+DG (R): 9.1.1.1
+DNS: 8.8.8.8

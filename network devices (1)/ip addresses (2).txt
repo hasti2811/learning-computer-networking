@@ -1,0 +1,54 @@
+IP addresses are the identity of each host, just like you need a mailing address to receive mail, you need an IP
+address to send and receive data
+
+if a computer makes a request to visit google.com, it stamps the packet with a src IP (the client IP (the computer)) and
+a dst IP (the server IP (the website server)). and when the server responds by providing the web page, it also stamps it
+with the src IP (the server IP (the website server)) and the dst IP (the client IP (the computer))
+
+ip addresses are 32 bits (bits = 1 or 0), so an IP address is just a different combination of 32 1s and 0s. we break the
+32 bits and present them as 4 octets, then we convert each octet into a decimal number.
+
+each octet can be from 0-255, example IP address: 136.22.17.98 --> each number can be from 0 to 255
+
+IP addresses are typically hierarchically assigned, for example take ACME, inc. they own every IP address that begins
+with 10.x.x.x and lets say they have 3 different offices (New York, London, Tokyo) and each office will have a subset of
+the ACME, inc IP:
+
+New York
+10.20.x.x
+(has everything that starts with 10.20.x.x)
+
+London
+10.30.x.x
+(has everything that starts with 10.30.x.x)
+
+Tokyo
+10.40.x.x
+(has everything that starts with 10.40.x.x)
+
+each office may have different teams so now imagine this:
+
+New York
+10.20.x.x
+sales: 10.20.55.x (has everything that starts with 10.20.55.x)
+engineering: 10.20.66.x (has everything that starts with 10.20.66.x)
+marketing: 10.20.77.x (has everything that starts with 10.20.77.x)
+
+London
+10.30.x.x
+sales: 10.30.55.x (has everything that starts with 10.30.55.x)
+engineering: 10.30.66.x (has everything that starts with 10.30.66.x)
+marketing: 10.30.77.x (has everything that starts with 10.30.77.x)
+
+Tokyo
+10.40.x.x
+sales: 10.40.55.x (has everything that starts with 10.40.55.x)
+engineering: 10.40.66.x (has everything that starts with 10.40.66.x)
+marketing: 10.40.77.x (has everything that starts with 10.40.77.x)
+
+
+this hierarchy allows us to pinpoint where a specific host exist, if we had the IP 10.30.55.127, we'd know that its host
+is at ACME, in London, in sales
+
+
+

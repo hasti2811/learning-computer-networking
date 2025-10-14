@@ -1,0 +1,72 @@
+layer 4 is the transport layer also can be called service to service delivery.
+
+a computer has a MAC address and an IP address, lets say this computer is browsing the internet, running a chat program,
+and also running a game. each of those programs will be sending data over the wire and will be sent to the IP address.
+
+layer 4 ensures that the correct programs receive the correct data, layer 4 is there to distinguish data streams, it
+gets all the data and ensures that each program receives the intended data. just how layer 2 and 3 use addressing
+schemes, layer 4 uses one too which is known as ports.
+
+there are 2 categories of ports, TCP and UDP. there are 0-65535 TCP ports and also 0-65535 UDC ports. TCP and UDP are
+2 different strategies for distinguishing data streams, TCP favours reliability and UDP favours efficiency
+
+every program that is expected to receive or send data over the wire has its own port number, when data arrives on the
+wire to the computer, the data will also have layer 4 information (alongside the layer 2 and layer 3 information), that
+layer 4 information will look like this: TCP 1025 -> 80. it shows that 80 is the port that should be receiving the data.
+
+every time a computer makes a request to a web server, its not only making a request to the IP address but its also
+making a request to the port.
+
+computer 1.1.1.1-------------->www.bank.com 2.2.2.2:443
+
+the computer would randomly choose a port as the source port for the connection (lets say 9999)
+
+so the request would look like this:
+
+src - 1.1.1.1:9999
+dst - 2.2.2.2.443
+
+the randomly selected source port is important because that is the same port that the client will listen to for the
+response, when the server responds, it would look like this:
+
+src - 2.2.2.2:443
+dst - 1.1.1.1.9999
+
+
+the way TCP works is firstly TCP performs a 3 way handshake to establish a connection between the client and the server.
+when the client wants to connect to the server, it sends a SYN (synchronise) packet to request connection. this packet
+contains an initial sequence number (ISN).
+
+then the server responds with SYN-ACK, acknowledging the clients SYN and sending its own SYN with its ISN. then the client
+sends back an ACK to acknowledge the server's SYN. now the connection is established.
+
+TCP ensures reliable data transfer with ISN, this keeps track of data which is sent and received. when the client sends
+data, each byte increases the sequence number. so lets say the clients ISN starts with 1000, then it sends 500 bytes,
+the server will reply with ACK=1500.
+
+to avoid sending too much data at once, TCP uses windowing. the window size tells how much data can be sent before waiting
+for an ACK. when ACKs come in, the window 'slides' forward, allowing more data to go through.
+
+TCP uses checksums to detect errors, if a packet is lost or damaged, the receiver wont ACK it. the sender notices the
+missing ACK and resends that data.
+
+when the connection is finished, TCP uses a 4 way handshake to close the connection. one side sends FIN (im done sending).
+then the other side replies ACK, then that side sends its own FIN, the first side replies ACK and the connection closes.
+
+
+UDP: unlike TCP, UDP is connectionless, it does not establish a handshake to start communication. it sends data in packets
+(datagrams) without tracking order or reliability. there are no sequence numbers or ACKs. it just gets sent straight
+through. its much faster than TCP but its less reliable.
+
+TCP is more used for web browsing (HTTP/HTTPS), FTP, SMTP, SSH. UDP is more used for video and audio streaming, online
+gaming, voice over IP, live broadcasts.
+
+
+
+
+
+
+
+
+
+

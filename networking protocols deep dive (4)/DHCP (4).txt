@@ -1,0 +1,11 @@
+a host must require those 4 conditions (IP, SM, DG, DNS) to be configured anytime it connects to a network.
+
+as we said before a host is anything that sends or receives traffic on the internet. however every time we connect to a new
+network such as airport wifi, coffee shop wifi etc, we don't need to configure those 4 things manually yet we can still
+reach the internet. the reason for this is a protocol that is being used behind the scenes known as the DHCP protocol.
+
+DHCP - dynamic host configuration protocol, DCHP server provides IP/SM/DG/DNS for any client, this happens every time
+you connect to a new wifi network.
+
+a host will send a DHCP discover message to discover the DCHP server, then  the DHCP server will provide those 4
+configurations in response back to the client, now our client has everything it needs to connect to the internet.

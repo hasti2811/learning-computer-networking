@@ -1,0 +1,86 @@
+switching is the process of moving data within networks, switches are devices that perform switching
+
+since switches move data within a network, the hosts must be all in the same network where the switch operates. the hosts
+also will have IP addresses and MAC addresses
+
+since switches are layer 2 devices, they only use the layer 2 header to make decisions.
+
+lets say there is a network with 4 hosts (A, B, C, D) and one switch which connects the hosts.
+
+hosts MAC addresses:
+A - a1a1
+B - b2b2
+C - c3c3
+D - d4d4
+
+host A wants to send data to host D, host A would need to do ARP to get host D's MAC address but lets say its done that.
+since switches only care about the layer 2 header we don't need to worry about IP addresses, so the data is:
+
+layer 2:
+SRC a1a1
+DST d4d4
+
+switches use and maintain a MAC address table which maps the switch ports to MAC addresses, each host is plugged into
+the switch in a port
+
+A - a1a1 (switch port 5)
+B - b2b2 (switch port 6)
+C - c3c3 (switch port 7)
+D - d4d4 (switch port 8)
+
+the MAC address table would look like this:
+
+5 -> a1a1
+6 -> b2b2
+7 -> c3c3
+8 -> d4d4
+
+however the MAC address table begins as empty, as data flows through, the MAC address table will populate itself
+
+the switch only performs 3 actions from here:
+1) learn
+2) flood
+3) forward
+
+when host A's data gets sent across the wire, the switch does action 1 learn. it will update the MAC address table with
+mapping of switch port to source MAC. meaning on port 5 this switch received the MAC address of a1a1: 5 -> a1a1. now the
+switch has to figure out what it has to do with the frame. it will look at the DST MAC address and know that d4d4 is the
+destination. we know its host D but the MAC address table doesn't know which port and host that d4d4 is connected to.
+
+so the switch does action 2 flood which duplicates the frame and sends it to all ports (except the receiving port). then
+hosts B and C will check if it is the destined MAC address, because it is not they will discard the frame and host D
+will realise that it is the destination and it will accept the frame. then host D will send a response to 
+host A (SRC d4d4 DST a1a1). the frame will arrive to port 8, this allows the switch to do action 1 learn as it learnt
+that something arrived to port 8 with the source MAC address of d4d4.
+
+now the MAC address table would look like this:
+5 -> a1a1
+8 -> d4d4
+
+now the switch will look at the destination MAC address which is a1a1, as we can see the MAC address table knows that
+a1a1 is on port 5 so the switch can do action 3 because it knows which port the destination MAC address exists on.
+
+now from this point if A and D need to send and receive data with each other, it will go through easily because
+the MAC address table is populated with their respective ports and MAC addresses
+
+if host D was a router, it would do the exact same thing except for the layer 3 header which has nothing to do with
+the switch anyway
+
+everything described so far was traffic going through the switch, however switches have MAC addresses but it was
+uninvolved during the process of hosts sending traffic through the switch. if you wanted to send data to the switch
+then the switches MAC address would be involved. the switches IP address would also be required. if you are sending
+data to the switch, the switch is now acting as another host on the network
+
+
+
+
+
+
+
+
+
+
+
+
+
+

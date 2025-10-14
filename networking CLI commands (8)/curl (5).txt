@@ -1,0 +1,61 @@
+curl - transfers data from a sever over HTTP, HTTPS, FTP etc. it can download web pages and send requests. it lets you
+fetch or send data over the internet from the command line
+
+curl -L https://google.com:
+hasti@DESKTOP-V3TMK7G:/mnt/c/Users/Hasti Amin/OneDrive/Desktop$ curl -L pracnet.net/simple.html
+<HTML>
+
+<HEAD>
+  <TITLE>This is a Simple HTML Page</TITLE>
+  <link rel="icon" href="favicon.png" />
+</HEAD>
+
+<BODY>
+
+  <H1>This is a Title</H1>
+  <hr>
+
+  <H2>This is a Subtitle</H2>
+  <p>This is some text.</p>
+  <p>This is some <strong>bold</strong> text.</p>
+  <p>This is some <em>italic</em> text.</p>
+  <p>This is an image: <BR />
+    <img src="//pracnet.net/favicon.ico">
+  </p>
+  <hr>
+
+</BODY>
+
+</HTML>
+
+this basically makes a https request to the web server (like a browser would) and it receives the response and prints
+the html code.
+
+
+curl -I pracnet.net/simple.html:
+hasti@DESKTOP-V3TMK7G:/mnt/c/Users/Hasti Amin/OneDrive/Desktop$ curl -I pracnet.net/simple.html
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Connection: Keep-Alive
+Content-Length: 408
+Content-Type: text/html
+Date: Mon, 13 Oct 2025 20:05:39 GMT
+Keep-Alive: timeout=5, max=100
+Last-Modified: Tue, 12 Sep 2023 18:12:09 GMT
+Server: LiteSpeed
+
+this fetches only the HTTP headers from the web server instead of the full content.
+HTTP/1.1 200 OK = request succeeded
+content-length: 408 = size of page in bytes
+content-type: text/html = type of content
+Server: LiteSpeed = server software
+
+
+
+
+
+
+
+
+
+

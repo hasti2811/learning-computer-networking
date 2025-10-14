@@ -1,0 +1,55 @@
+we've mentioned that hosts are devices that send or receive traffic. and that hosts are either hosts or servers. we also
+have said that servers are just computers with software that responds to specific requests.
+
+- so an FTP server is just a computer with FTP software installed
+- an SMTP server is just a computer with SMTP software installed
+- a web server is just a computer with http/https software installed.
+
+FTP server
+84.68.31.41
+
+SMTP server
+john@gmail.com
+
+Web server
+http://site.com
+https://site.com
+
+client (host/computer)
+9.1.1.11
+
+so these clients and those servers (above 3 + etc) all follow the same rules of host to host communication, and for a host
+to communicate to another host, it must know the other hosts IP address.
+
+now the client can communicate with the FTP server because we can see its IP address (84.68.31.41), but how would that
+client speak to the SMTP and web server? every time we browse a website, we write a domain name not an IP address.
+
+to solve this we have a protocol known as DNS
+
+DNS - domain name system, this converts domain names into IP addresses.
+
+when you type a website into the browser, your computer is going to make a request to a DNS server which will ask for the
+IP address of the website that you searched. then the DNS server will provide an IP address which will allow your host
+to make a request to the actual web server using the IP address.
+
+computer ----------|IP address for site.com?|----------> DNS server
+DNS server ----------|site.com. 160.8.23.154|----------> computer
+
+DNS server
+8.8.8.8
+
+the exact same process would happen for emails, the DNS would convert the domain (gmail.com) into an IP address, then
+the host can communicate with the SMTP server.
+
+
+
+
+
+
+
+
+
+
+
+
+
