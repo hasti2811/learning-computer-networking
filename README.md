@@ -24,7 +24,7 @@ Then select an instance type, i decided to go with t2.micro
 
 After that create a new key pair and give it a name of your choice, type-->RSA, private key file format-->.pem
 
-Create the key pair and download the file, put the .pem file into a new directory. Make sure the directory (with the .pem key inside) is located within the ./~ (home) directory in linux
+Create the key pair and download the file, put the .pem file into a new directory. Make sure the directory (with the .pem key inside) is located within the ~ (home) directory in linux
 
 <img src="images/ec2-3.png" alt="Screenshot" width="585" height="559">
 
@@ -49,13 +49,13 @@ ssh -i "<name_of_pem_file>.pem" ubuntu@ec2-3-8-96-204.eu-west-2.compute.amazonaw
 
 Firstly we need to grab the IP address of the EC2 instance, to do this we can go to our instance and select it, down below copy the public IPv4 address
 
-Before we link the Ec2's public IPv4 address it is cruicial to understand how it works. The public IPv4 address is the IP address that is accessible from the internet which allows you (and anyone else if you allow it from the security rules) to connect to the EC2 instance from outside AWS.
+Before we link the EC2's public IPv4 address it is cruicial to understand how it works. The public IPv4 address is the IP address that is accessible from the internet which allows you (and anyone else if you allow it from the security rules) to connect to the EC2 instance from outside AWS.
 
 This public IPv4 address is a dynamic address, by default, AWS gives your EC2 instance a dynamic public IP address which means that the public IP address changes everytime you stop and start the instance. if you want a permanent IP address you would have to use an elastic IP. For that reason we will use an elastic IP because it is a static IP address.
 
 If we dont use an elastic IP, everytime we stop and start the instance we would have to link the new public IP address to the domain.
 
-If you wish to use the public IP address then copy it and go to step 6
+If you wish to use the public IP address then copy it and go to step 5
 
 ### Step 4: Create and allocate elastic IP address:
 
@@ -100,7 +100,7 @@ Edit the server=_; and replace _ with your A record domain
 Now we have to test the nginx config for errors:
 sudo nginx -t
 
-If everything is goo we can reload the changes with this command:
+If everything is good we can reload the changes with this command:
 sudo systemctl reload nginx
 
 To test the website run the command:
