@@ -26,7 +26,7 @@ After that create a new key pair and give it a name of your choice, type-->RSA, 
 
 Create the key pair and download the file, put the .pem file into a new directory. Make sure the directory (with the .pem key inside) is located within the ./~ (home) directory in linux
 
-<img src="images/ec2-3.png" alt="Screenshot" width="700" height="600">
+<img src="images/ec2-3.png" alt="Screenshot" width="600" height="400">
 
 Then create a security group and allow SSH from your IP address, allow HTTP and HTTPS traffic from the internet. Now launch the instance
 
