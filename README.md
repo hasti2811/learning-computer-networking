@@ -84,8 +84,11 @@ Click create record, for the name we can create a subdomain or just leave it as 
 Once you have connected to the EC2 instance via SSH, then run these commands into the terminal:
 
 sudo apt update
+
 sudo apt install nginx -y
+
 sudo systemctl start nginx
+
 sudo systemctl enable nginx
 
 To check the status of ngninx you can run the command:
