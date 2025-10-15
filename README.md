@@ -34,7 +34,7 @@ Then create a security group and allow SSH from your IP address, allow HTTP and 
 
 ### Step 3: SSH into the EC2 instance:
 
-Once the instance has launched, select the instance and click on connect then go to the SSH tab. On the terminal enter the directory with the pem key with the command cd: (directory_name)
+Once the instance has launched, select the instance and click on connect then go to the SSH tab. On the terminal enter the directory with the pem key with the command: cd (directory_name)
 
 <img src="images/ssh.png" alt="Screenshot" width="1264" height="588">
 
