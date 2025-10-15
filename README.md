@@ -34,7 +34,7 @@ Then create a security group and allow SSH from your IP address, allow HTTP and 
 
 ### Step 3: SSH into the EC2 instance:
 
-Once the instance has launched, select the instance and click on connect then go to the SSH tab. On the terminal enter the directory with the pem key with the command cd <directory>
+Once the instance has launched, select the instance and click on connect then go to the SSH tab. On the terminal enter the directory with the pem key with the command cd: (directory_name)
 
 <img src="images/ssh.png" alt="Screenshot" width="1264" height="588">
 
@@ -92,9 +92,11 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 To check the status of ngninx you can run the command:
+
 sudo systemctl status nginx
 
 Now we have to edit the nginx server block so nginx knows which domain to serve:
+
 sudo vim /etc/nginx/sites-available/default
 
 Edit the server=_; and replace _ with your A record domain
@@ -105,6 +107,7 @@ Now we have to test the nginx config for errors:
 sudo nginx -t
 
 If everything is good we can reload the changes with this command:
+
 sudo systemctl reload nginx
 
 To test the website run the command:
@@ -131,9 +134,11 @@ We can now enter into the website by entering http://domainename, for my case i 
 ### Step 7: Enabling HTTPS:
 
 To enable HTTPS we can run the command:
+
 sudo apt install certbot python3-certbot-nginx -y
 
 Now we need to run Certbot for our domain:
+
 sudo certbot --nginx -d yourdomainname
 
 For my case i would run: sudo certbot --nginx -d hastiamin.co.uk
@@ -150,10 +155,13 @@ You can also enter the domain into the browser and it should load.
 ### Step 8: customising the HTML/CSS:
 
 Firstly enter and view the /var/www/html directory with this command:
+
 cd /var/www/html
+
 ls
 
 To edit the HTML run this command:
+
 sudo vim index.nginx-debian.html
 
 Then edit the HTML to your desired website style.
