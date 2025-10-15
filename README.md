@@ -8,7 +8,7 @@
 
 Go to AWS Route 53 then click register a domain, entrer a domain name and select one that is available, watch out for the price too, then proceed to checkout.
 
-<img src="images/r53.png" alt="Screenshot" width="1264" height="588">
+<img src="images/r53.png" alt="Screenshot" width="1264" height="700">
 
 Next go to hosted zone, your domain should be there. Click on your domain and you should be able to see it including the records, we will need to come back here.
 
@@ -26,7 +26,7 @@ After that create a new key pair and give it a name of your choice, type-->RSA, 
 
 Create the key pair and download the file, put the .pem file into a new directory. Make sure the directory (with the .pem key inside) is located within the ./~ (home) directory in linux
 
-<img src="images/ec2-3.png" alt="Screenshot" width="1264" height="900">
+<img src="images/ec2-3.png" alt="Screenshot" width="1000" height="600">
 
 Then create a security group and allow SSH from your IP address, allow HTTP and HTTPS traffic from the internet. Now launch the instance
 
@@ -61,13 +61,13 @@ If you wish to use the public IP address then copy it and go to step 6
 
 On the AWS side-bar, click on elastic IPs and click allocate elastic IP address and click allocate.
 
-<img src="images/elastic1.png" alt="Screenshot" width="1264" height="588">
+<img src="images/elastic1.png" alt="Screenshot" width="1264" height="710">
 
 Then select the elastic IP address and click actions, then click on associate elastic IP address and select the EC2 instance we created and launched earlier
 
 Now we have successfully allocated an elastic IP address to our EC2 instance
 
-<img src="images/elastic2.png" alt="Screenshot" width="1264" height="588">
+<img src="images/elastic2.png" alt="Screenshot" width="1264" height="720">
 
 ### Step 5: Creating A record for domain and allocating public IP address/elastic IP address to it
 
@@ -77,7 +77,7 @@ Go to Route 53 and navigate to hosted zone, your domain should be there, click o
 
 Click create record, for the name we can create a subdomain or just leave it as root (not enter a subdomain), i will leave it as root. In the value section enter the elastic IP address or the public IP address if you chose not to go with elastic. Make sure you are creating an A record. Then click create record.
 
-<img src="images/record.png" alt="Screenshot" width="1264" height="588">
+<img src="images/record.png" alt="Screenshot" width="1264" height="700">
 
 ### Step 6: Install and run nginx:
 
@@ -118,7 +118,7 @@ If we see HTTP/1.1 200 OK, then the website is running as intended.
 
 We can now enter into the website by entering http://domainename, for my case i would be entering http://hastiamin.co.uk
 
-<img src="images/nginx default.png" alt="Screenshot" width="700" height="700">
+<img src="images/nginx default.png" alt="Screenshot" width="1000" height="850">
 
 <img src="images/curl1.png" alt="Screenshot" width="800" height="900">
 
@@ -139,7 +139,7 @@ It will prompt you for your email so make sure you enter it.
 Now run this command to test if its working via HTTPS:
 curl -L https://domainname
 
-You could also just do -I https://domainname to get the headers.
+You could also just do curl -I https://domainname to get the headers.
 
 You can also enter the domain into the browser and it should load.
 
