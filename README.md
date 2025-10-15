@@ -38,11 +38,12 @@ Once the instance has launched, select the instance and click on connect then go
 
 <img src="images/ssh.png" alt="Screenshot" width="1264" height="588">
 
-Then run the command chmod 400 "<name_of_pem_file>.pem"
+Then run the command: chmod 400 "<name_of_pem_file>.pem"
 
 This command sets the file to read-only for the owner, no one else can read, write or execute it
 
 SSH into the EC2 instance with the command:
+
 ssh -i "<name_of_pem_file>.pem" ubuntu@ec2-3-8-96-204.eu-west-2.compute.amazonaws.com
 
 ### Static vs dynamic IP address (elastic IP address vs EC2 public IP address):
@@ -54,6 +55,8 @@ Before we link the EC2's public IPv4 address it is cruicial to understand how it
 This public IPv4 address is a dynamic address, by default, AWS gives your EC2 instance a dynamic public IP address which means that the public IP address changes everytime you stop and start the instance. if you want a permanent IP address you would have to use an elastic IP. For that reason we will use an elastic IP because it is a static IP address.
 
 If we dont use an elastic IP, everytime we stop and start the instance we would have to link the new public IP address to the domain.
+
+Also AWS does not charge you if you are using an elastic IP on a running instance, they only charge you if you are using an elastic IP on an instance that is not runnin, but keep in mind that if you keep your instance running foreever then you will be charged, although it may not be a significant amount, it is good to know.
 
 If you wish to use the public IP address then copy it and go to step 5
 
@@ -75,7 +78,7 @@ Go to the running EC2 instance and select it, then copy the IP address.
 
 Go to Route 53 and navigate to hosted zone, your domain should be there, click on it.
 
-Click create record, for the name we can create a subdomain or just leave it as root (not enter a subdomain), i will leave it as root. In the value section enter the elastic IP address or the public IP address if you chose not to go with elastic. Make sure you are creating an A record. Then click create record.
+Click create record, for the name we can create a subdomain or just leave it as root (by not entering a subdomain), i will leave it as root. In the value section enter the elastic IP address or the public IP address if you chose not to go with elastic. Make sure you are creating an A record. Then click create record.
 
 <img src="images/record.png" alt="Screenshot" width="1264" height="700">
 
