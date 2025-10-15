@@ -1,8 +1,8 @@
-# Networking assignment
+# Networking assignment: running nginx on EC2 instance and linking it to a domain from Route 53
 
-## I will explain how to purchase a domain from AWS Route 53 and link it to an EC2 instance running nginx on port 80 at first, then I will go through how to enable HTTPS so that it can be accessed on port 443 which is more secure. I will also explain how you can customise the front end interface.
+### I will explain how to purchase a domain from AWS Route 53 and link it to an EC2 instance running nginx on port 80 at first, then I will go through how to enable HTTPS so that it can be accessed on port 443 which is more secure. I will also explain how you can customise the front end interface.
 
-## I will also explain how you can use an elastic IP rather than the public IP, i will analyse its benefits and drawbacks.
+### I will also explain how you can use an elastic IP rather than the public IP, i will analyse its benefits and drawbacks.
 
 ### Step 1: Buy a domain from AWS Route 53:
 
