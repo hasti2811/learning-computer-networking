@@ -52,13 +52,13 @@ Firstly we need to grab the IP address of the EC2 instance, to do this we can go
 
 Before we link the EC2's public IPv4 address it is cruicial to understand how it works. The public IPv4 address is the IP address that is accessible from the internet which allows you (and anyone else if you allow it from the security rules) to connect to the EC2 instance from outside AWS.
 
-This public IPv4 address is a dynamic address, by default, AWS gives your EC2 instance a dynamic public IP address which means that the public IP address changes everytime you stop and start the instance. if you want a permanent IP address you would have to use an elastic IP. For that reason we will use an elastic IP because it is a static IP address.
+This public IPv4 address is a dynamic address, by default, AWS gives your EC2 instance a dynamic public IP address which means that the public IP address changes everytime you stop and start the instance. If you want a permanent IP address you would have to use an elastic IP. For that reason we will use an elastic IP because it is a static IP address.
 
 If we dont use an elastic IP, everytime we stop and start the instance we would have to link the new public IP address to the domain.
 
-Also AWS does not charge you if you are using an elastic IP on a running instance, they only charge you if you are using an elastic IP on an instance that is not runnin, but keep in mind that if you keep your instance running foreever then you will be charged, although it may not be a significant amount, it is good to know.
+Also AWS does not charge you if you are using an elastic IP on a running instance, they only charge you if you are using an elastic IP on an instance that is not running, but keep in mind that if you keep your instance running forever then you will be charged, although it may not be a significant amount, it is good to know.
 
-If you wish to use the public IP address then copy it and go to step 5
+If you wish to use the public IP address then copy it and go to step 5.
 
 ### Step 4: Create and allocate elastic IP address:
 
@@ -66,9 +66,9 @@ On the AWS side-bar, click on elastic IPs and click allocate elastic IP address 
 
 <img src="images/elastic1.png" alt="Screenshot" width="1264" height="710">
 
-Then select the elastic IP address and click actions, then click on associate elastic IP address and select the EC2 instance we created and launched earlier
+Then select the elastic IP address and click actions, then click on associate elastic IP address and select the EC2 instance we created and launched earlier.
 
-Now we have successfully allocated an elastic IP address to our EC2 instance
+Now we have successfully allocated an elastic IP address to our EC2 instance.
 
 <img src="images/elastic2.png" alt="Screenshot" width="1264" height="720">
 
@@ -102,11 +102,12 @@ Now we have to edit the nginx server block so nginx knows which domain to serve:
 
 sudo vim /etc/nginx/sites-available/default
 
-Edit the server=_; and replace _ with your A record domain
+Edit the server=_; and replace _ with your A record domain.
 
 <img src="images/file.png" alt="Screenshot" width="1264" height="688">
 
 Now we have to test the nginx config for errors:
+
 sudo nginx -t
 
 If everything is good we can reload the changes with this command:
@@ -119,7 +120,7 @@ curl http://localhost
 Or more specifically:
 curl -L http://domainname
 
-This command displays the html code of the website
+This command displays the html code of the website.
 
 To fetch only the headers we can do:
 curl -I http://domainname
